@@ -1,27 +1,28 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  body {
-    background: black;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: sans-serif;
-  }
-  /* Botão centralizado */
-  #clickButton {
-    font-size: 24px;
-    color: white;
-    background: transparent;
-    border: 2px solid blue;
-    padding: 20px 40px;
-    cursor: pointer;
-    transition: transform 0.3s, background-color 0.3s;
-  }
-  #clickButton:hover {
-    transform: translateY(-5px);
-    background-color: rgba(255, 255, 255, 0.1);
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: black;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+/* Botão centralizado e menor com bordas arredondadas */
+#clickButton {
+  font-size: 20px;
+  color: white;
+  background: transparent;
+  border: 2px solid blue;
+  padding: 10px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+}
+#clickButton:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.1);
+}
