@@ -1,74 +1,142 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Te Amo</title>
-  <style>
-    body { background: black; color: white; margin: 0; padding: 0; overflow: hidden; font-family: sans-serif; }
-    .heart { position: absolute; top: 0; font-size: 24px; animation: fall linear infinite; opacity: 0.8; }
-    @keyframes fall { 0% { transform: translateY(0); opacity: 0.8; } 100% { transform: translateY(110vh); opacity: 0; } }
-    .slider { width: 300px; height: 300px; overflow: hidden; margin: 100px auto 20px auto; position: relative; }
-    .slides { display: flex; width: 500%; transition: transform 1s ease; }
-    .slides img { width: 20%; height: 100%; object-fit: cover; }
-    .love-message { text-align: center; font-size: 24px; margin-bottom: 10px; }
-    .timer { text-align: center; font-size: 20px; margin-bottom: 20px; }
-    hr { border: none; border-top: 1px solid white; margin: 20px auto; width: 80%; }
-    .final-message { text-align: center; font-size: 18px; padding: 0 20px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te Amo</title>
+    <style>
+        body {
+            background: black;
+            color: white;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        .heart {
+            position: absolute;
+            top: 0;
+            font-size: 24px;
+            animation: fall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+        }
+
+        .slider {
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            margin: 100px auto 20px auto;
+            position: relative;
+        }
+
+        .slides {
+            display: flex;
+            width: 500%;
+            transition: transform 1s ease;
+        }
+
+        .slides img {
+            width: 20%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .love-message {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .timer {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid white;
+            margin: 20px auto;
+            width: 80%;
+        }
+
+        .final-message {
+            text-align: center;
+            font-size: 18px;
+            padding: 0 20px;
+        }
+    </style>
 </head>
+
 <body>
-  <div id="hearts-container"></div>
-  <div class="slider">
-    <div class="slides" id="slides">
-      <img src="./images/WhatsApp Image 2025-04-11 at 00.19.28_b33222222228ff.jpg" alt="Foto 1">
-      <img src="./images/WhatsApp Image 2025-04-11 at 00.19.28_290ba0fd.jpg" alt="Foto 2">
-      <img src="./images/WhatsApp Image 2025-04-11 at 00.19.28_6f19c266.jpg" alt="Foto 3">
-      <img src="./images/WhatsApp Image 2025-04-11 at 00.19.28_8c950c75.jpg" alt="Foto 4">
-      <img src="./images/WhatsApp Image 2025-04-11 at 00.18.41_817c7a01.jpg" alt="Foto 5">
+    <div id="hearts-container"></div>
+    <div class="slider">
+        <div class="slides" id="slides">
+            <img src="./images/WhatsApp Image 2025-04-11 at 00.19.28_b33222222228ff.jpg" alt="Foto 1">
+            <img src="./images/WhatsApp Image 2025-04-11 at 00.19.28_290ba0fd.jpg" alt="Foto 2">
+            <img src="./images/WhatsApp Image 2025-04-11 at 00.19.28_6f19c266.jpg" alt="Foto 3">
+            <img src="./images/WhatsApp Image 2025-04-11 at 00.19.28_8c950c75.jpg" alt="Foto 4">
+            <img src="./images/WhatsApp Image 2025-04-11 at 00.18.41_817c7a01.jpg" alt="Foto 5">
+        </div>
     </div>
-  </div>
-  <div class="love-message">❤️ Eu te amo ha:</div>
-  <div class="timer" id="timer">Tempo juntos: 0 anos, 0 dias, 0 horas, 0 minutos e 0 segundos</div>
-  <hr>
-  <div class="final-message">Você é a razão do meu sorriso. Eu te amo mais do que tudo!</div>
-  <script>
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.innerText = '💗';
-      heart.style.left = Math.random() * 100 + 'vw';
-      const duration = Math.random() * 5 + 5;
-      heart.style.animationDuration = duration + 's';
-      heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
-      document.body.appendChild(heart);
-      setTimeout(() => { heart.remove(); }, duration * 1000);
-    }
-    setInterval(createHeart, 500);
-    const slides = document.getElementById('slides');
-    const totalSlides = slides.children.length;
-    let currentIndex = 0;
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % totalSlides;
-      slides.style.transform = 'translateX(-' + (currentIndex * 20) + '%)';
-    }
-    setInterval(nextSlide, 3500);
-    const startDate = new Date(2023, 8, 20);
-    const timerElement = document.getElementById('timer');
-    function updateTimer() {
-      let diff = Math.floor((new Date() - startDate) / 1000);
-      const years = Math.floor(diff / (3600 * 24 * 365));
-      diff -= years * 3600 * 24 * 365;
-      const days = Math.floor(diff / (3600 * 24));
-      diff -= days * 3600 * 24;
-      const hours = Math.floor(diff / 3600);
-      diff -= hours * 3600;
-      const minutes = Math.floor(diff / 60);
-      const seconds = diff - minutes * 60;
-      timerElement.textContent = `Tempo juntos: ${years} anos, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos`;
-    }
-    updateTimer();
-    setInterval(updateTimer, 1000);
-  </script>
+    <div class="love-message">❤️ Eu te amo ha:</div>
+    <div class="timer" id="timer">Tempo juntos: 0 anos, 0 dias, 0 horas, 0 minutos e 0 segundos</div>
+    <hr>
+    <div class="final-message">Você é a razão do meu sorriso, meu porto seguro e meu maior presente. Cada segundo ao seu
+        lado é mágico e único. Obrigado por me fazer a pessoa mais feliz deste mundo. Eu te amo mais do que tudo, e vou
+        te amar para sempre!</div>
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerText = '💗';
+            heart.style.left = Math.random() * 100 + 'vw';
+            const duration = Math.random() * 5 + 5;
+            heart.style.animationDuration = duration + 's';
+            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, duration * 1000);
+        }
+        setInterval(createHeart, 500);
+        const slides = document.getElementById('slides');
+        const totalSlides = slides.children.length;
+        let currentIndex = 0;
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            slides.style.transform = 'translateX(-' + (currentIndex * 20) + '%)';
+        }
+        setInterval(nextSlide, 3500);
+        const startDate = new Date(2023, 8, 20);
+        const timerElement = document.getElementById('timer');
+        function updateTimer() {
+            let diff = Math.floor((new Date() - startDate) / 1000);
+            const years = Math.floor(diff / (3600 * 24 * 365));
+            diff -= years * 3600 * 24 * 365;
+            const days = Math.floor(diff / (3600 * 24));
+            diff -= days * 3600 * 24;
+            const hours = Math.floor(diff / 3600);
+            diff -= hours * 3600;
+            const minutes = Math.floor(diff / 60);
+            const seconds = diff - minutes * 60;
+            timerElement.textContent = `Tempo juntos: ${years} anos, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos`;
+        }
+        updateTimer();
+        setInterval(updateTimer, 1000);
+    </script>
 </body>
+
 </html>
